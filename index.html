@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>LumosFlow</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="body">
+
+        <h1 id="title"></h1>
+        <br>
+        <div id="author-list">
+        </div>
+        <br>
+        <div id="affiliation-list">
+        </div>
+        <div id="footnote">
+            <span ></span>
+        </div>
+        <div id="conference">
+        </div>
+        <!-- <div id="button-list">
+            <a id="paper">
+                <img src="assets/logos/arXiv.svg">
+                <span>paper</span>
+            </a>
+            <a id="supplementary">
+                <img src="assets/logos/arXiv.svg">
+                <span>supplementary material</span>
+            </a>
+        </div> -->
+
+        <div id="content" style="max-width:900px;margin:auto; margin-bottom: 1em" >
+            <section class="slider-wrapper">
+                <button class="slide-arrow slide-arrow-prev">
+                            &#8249;
+                </button>
+                <button class="slide-arrow slide-arrow-next">
+                            &#8250;
+                </button>
+                
+                <div id='method'>
+                    <!-- <h2>Overview</h2> -->
+                    <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;"> Given a text prompt, LumosFlow first generates key frames. Optical flows are then generated between each pair of these key frames to model the motion transitions, which guides the synthesis of a generated video clip by interpolating frames between the initial and final states. This process is repeated iteratively for every pair of key frames across the sequence. Finally, all generated video clips are concatenated to form the complete, continuous long video. We visualize the generation of each video clip, as well as the generated optical flows (Generated Flows (First Frame), Generated Flows (Last Frame)) and pair of key frames (First Frame (Generated), Last Frame (Generated)) as follows. </p>
+                </div>
+
+                <ul class="slides-container">
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx0.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx16.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/0_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/0_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_0.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 1
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx16.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx32.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/1_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/1_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_1.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 2
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx32.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx48.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/2_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/2_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_2.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 3
+                    </li>  
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx48.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx64.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/3_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/3_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_3.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 4
+                    </li>               
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx64.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx80.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/4_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/4_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_4.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 5
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx80.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx96.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/5_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/5_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_5.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 6
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx96.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx112.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/6_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/6_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_6.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 7
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx112.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx128.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/7_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/7_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_7.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 8
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx128.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx144.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/8_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/8_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_8.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 9
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx144.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx160.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/9_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/9_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_9.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 10
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx160.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx176.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/10_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/10_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_10.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 11
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx176.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx192.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/11_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/11_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_11.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 12
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx192.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx208.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/12_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/12_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_12.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 13
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx208.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx224.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/13_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/13_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_13.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 14
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx224.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx240.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/14_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/14_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_14.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 15
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx240.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx256.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/15_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/15_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_15.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 16
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx256.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx272.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/16_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/16_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_16.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 17
+                    </li>
+                    <li class="slide">
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>
+                                        <span style="color: #009c3b; font-family: Bradley Hand;">A man with curly hair, dressed in <br /> a black shirt and  wearing a <br />  white virtual reality headset……</span>
+                                </th>
+                                <th>
+                                    <img src="assets2/i-frames/0idx64.png" height=128>
+                                </th>
+                                <th>
+                                    <image autoplay muted loop height="128">
+                                        <img src="assets2/i-frames/0idx80.png" height=128>
+                                    </image>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Text Prompt
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        First Frame (Generated)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Last Frame (Generated)
+                                    </p>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/17_flow_for.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/genflows/17_flow_back.mp4">
+                                    </video>
+                                </th>
+                                <th>
+                                    <video autoplay muted loop height="128">
+                                        <source src="assets2/gen-clips/clip_17.mp4">
+                                    </video>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                        (First Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Flows 
+                                        
+                                            (Last Frame)
+                                    </p>
+                                </th>
+                                <th>
+                                    <p style="font-size:18px;">
+                                        Generated Video Clip
+                                    </p>
+                                </th>
+                            </tr>
+                        </table>
+                        Video Clip 18
+                    </li>
+                </ul>
+            </section>
+            <br>
+
+            <div id='method'>
+                <h2>Abstract</h2>
+                <center><p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">Long video generation has gained increasing attention due to its widespread applications in fields such as entertainment and simulation. Despite advances, synthesizing temporally coherent and visually compelling long sequences remains a formidable challenge. Conventional approaches often synthesize long videos by sequentially generating and concatenating short clips, or generating key frames and then interpolate the intermediate frames in a hierarchical manner. However, both of them still remain significant challenges, leading to issues such as temporal repetition or unnatural transitions. In this paper, we revisit the hierarchical long video generation pipeline and introduce LumosFlow, a framework introduce motion guidance explicitly. Specifically, we first employ the Large Motion Text-to-Video Diffusion Model (LMTV-DM) to generate key frames with larger motion intervals, thereby ensuring content diversity in the generated long videos. Given the complexity of interpolating contextual transitions between key frames, we further decompose the intermediate frame interpolation into motion generation and post-hoc refinement. For each pair of key frames, the Latent Optical Flow Diffusion Model (LOF-DM) synthesizes complex and large-motion optical flows, while MotionControlNet subsequently refines the warped results to enhance quality and guide intermediate frame generation. Compared with traditional video frame interpolation, we achieve 15$\times$ interpolation, ensuring reasonable and continuous motion between adjacent frames. Experiments show that our method can generate long videos with consistent motion and appearance. Code and models will be made publicly available upon acceptance.</p></center>
+            </div>
+            <br>
+            <div id='method'>
+                <h2>Method Overview</h2>
+                <p style="max-width:900px; font-size:18px; margin:auto; text-align: justify; margin-bottom: 1em;">The overall framework of LumosFlow includes key frame generation and intermediate frame generation. The intermediate frame generation comprises two components: motion generation (highlighted in yellow) and post-hoc refinement (highlighted in orange). For details, in the generation process, LMTV-DM produces key frames with significant intervals, while LOF-DM and MotionControlNet collaborate to create realistic intermediate frames, effectively injecting motion (optical flow) into the generation.  </p>
+                <img src="main.png" height=530>
+            </div>
+
+            <br>
+            <br>
+            <div id="results">
+                <h2>Comparison on Long Video Generation</h2>
+                <div id="libby">
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                               <div>
+                                    Text Prompt
+                                </div>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A woman with long, wavy hair tied back, wearing a sheer, light blue top with thin straps, ……</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A woman with long, dark hair, wearing a dark coat over a light-colored top, walks briskly through a dimly lit, empty parking garage, ……</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A woman in a brown jacket and black helmet sits on a brown horse in an indoor equestrian arena, …….</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    FreeLong
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0059.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0075.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0064.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    FreeNoise
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0060.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0076.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0065.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Video-Inifinity
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000060_256_30_24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000076_256_30_24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000065_256_30_24.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    LumosFlow (ours)
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_59.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_75.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_64.mp4">
+                                </video>
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Text Prompt
+                                </div>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A couple dances intimately on a rooftop, captured from an eye-level camera angle, ……</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A woman in a light green, flowing dress walks gracefully on a paved surface composed of rectangular bricks, …… </span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">Three individuals are at an outdoor festival, holding clear plastic cups filled with beer, ……</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    FreeLong
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0067.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0088.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freelong/0070.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    FreeNoise
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0068.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0089.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/freenoise/0071.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Video-Inifity
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000068_256_30_24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000089_256_30_24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/videoinifity/000071_256_30_24.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    LumosFlow (Ours)
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_67.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_88.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets2/human study/IP_70.mp4">
+                                </video>
+
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+        </div>
+
+            <br>
+            <br>
+            <!-- <div id="results">
+                <h2>More Results on Text-to-Video Generation</h2>
+                <div id="libby">
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                               <div>
+                                    Text Prompt
+                                </div>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A panda playing on a swing set</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">beach view</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">lightning and storm</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Random Seed=0
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/A panda playing on a swing set_seed0.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/beach view_seed0.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/lightning and storm_seed0.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Random Seed=1
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/A panda playing on a swing set_seed1.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/beach view_seed1.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/lightning and storm_seed1.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Random Seed=2
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/A panda playing on a swing set_seed2.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/beach view_seed2.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_more/lightning and storm_seed2.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+
+
+              <br>
+            <br> -->
+            <!-- <div id="results">
+                <h2>Comparison on Image-to-Video Generation</h2>
+                <div id="libby">
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                               <div>
+                                    Key Frame
+                                </div>
+                            </th>
+                            <th>
+                                <img src="assets/image2video_compare/scooter-gray.png" height=256>
+                            </th>
+                            <th>
+                                <img src="assets/image2video_compare/boxing-fisheye.png" height=256>
+                            </th>
+                            <th>
+                                <img src="assets/image2video_compare/hike.png" height=256>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    Gen1
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/scooter-gray_gen1.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/boxing-fisheye_gen1.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/hike_gen1.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    MoVideo (ours)
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/scooter-gray_ours.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/boxing-fisheye_ours.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/hike_ours.mp4">
+                                </video>
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    GT
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/scooter-gray_gt.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/boxing-fisheye_gt.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/image2video_compare/hike_gt.mp4">
+                                </video>
+
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+                <br>
+                <br>
+
+                <div id="results">
+                <h2>Generating Videos with Different FPS</h2>
+                <div id="libby">
+                    <table style="width: 50%;margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>
+                               <div>
+                                    Text Prompt
+                                </div>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">An aircraft is moving on the water</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">A rocket is flying to the sky</span>
+                            </th>
+                            <th>
+                                <span style="color: #009c3b;font-family: Bradley Hand;">a boy in purple is skiing on the snow</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    fps=3
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/An aircraft is moving on the water_fps3.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/A rocket is flying to the sky_fps3.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/a boy in purple is skiing on the snow_fps3.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    fps=10
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/An aircraft is moving on the water_fps10.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/A rocket is flying to the sky_fps10.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/a boy in purple is skiing on the snow_fps10.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    fps=17
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/An aircraft is moving on the water_fps17.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/A rocket is flying to the sky_fps17.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/a boy in purple is skiing on the snow_fps17.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                               <div>
+                                    fps=24
+                                </div>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/An aircraft is moving on the water_fps24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/A rocket is flying to the sky_fps24.mp4">
+                                </video>
+                            </th>
+                            <th>
+                                <video autoplay muted loop width="256">
+                                    <source src="assets/text2video_fps/a boy in purple is skiing on the snow_fps24.mp4">
+                                </video>
+                            </th>
+                        </tr>
+                      </table>
+                </div>
+        </div> -->
+            <p class="section">&nbsp;</p>
+            <!--p class="section" id="bibtex"--><!--/p-->
+            <table border="0">
+                <tbody>
+                <!-- <pre style=" display: block;
+                    background: #eee;
+                    white-space: pre;
+                    -webkit-overflow-scrolling: touch;
+                    max-width: 100%;
+                    min-width: 100px;
+                    border-radius: 20px;
+                    text-align: left
+                    "> -->
+
+    <!-- @inproceedings{liang2024movideo,
+         author={Liang, Jingyun and Fan, Yuchen and Zhang, Kai and Timofte, Radu and Van Gool, Luc and Ranjan, Rakesh},
+         title = {MoVideo: Motion-Aware Video Generation with Diffusion Models},
+         booktitle = {European Conference on Computer Vision},
+         pages={0000--0000},
+         year = 2024
+    } -->
+                </pre>
+            </tbody>
+        </table>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+    <!-- <script type="text/javascript" src="cocoen.js"></script> -->
+    <!-- <script>
+        Cocoen.parse(document.body);
+    </script> -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <a class="icon-link"
+             href="https://arxiv.org/abs/2311.00000">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <a class="icon-link" href="https://github.com/jingyunliang" class="external-link" disabled>
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This website is based on <a href="https://duyguceylan.github.io/pix2video.github.io">pix2video</a>, licensed under a <a rel="license"
+                                                    href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+</body>
